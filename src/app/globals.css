@@ -3,25 +3,35 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  cursor: crosshair !important;
+}
+
+html a,
+html button {
+  cursor: cell !important;
+}
+
+@layer base {
+  @font-face {
+    font-family: RagBold;
+    font-weight: 800;
+    src: url(/fonts/Rag-Bold.woff2) format("woff2");
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  @font-face {
+    font-family: RagRegular;
+    font-weight: 800;
+    src: url(/fonts/Rag-Regular.woff2) format("woff2");
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  @font-face {
+    font-family: HN;
+    font-weight: 600;
+    src: url(/fonts/HN-md.woff2) format("woff2");
   }
 }
