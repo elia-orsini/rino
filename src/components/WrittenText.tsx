@@ -16,15 +16,13 @@ const WrittenText: React.FC<{ text: string }> = ({ text }) => {
         ease: "none",
       },
       {
-        duration: Math.floor(text.length * 0.01),
+        duration: Math.floor(text.length * 0.005),
         text: text,
       }
     );
   }, []);
 
-  console.log(text.length);
-
-  return <p className="writeText bg-black/50" />;
+  return <p className="writeText bg-black/60" />;
 };
 
 export default WrittenText;

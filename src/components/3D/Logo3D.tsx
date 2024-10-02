@@ -24,7 +24,6 @@ export default function Logo3D() {
       <directionalLight position={[-5, 5, 0]} />
       <directionalLight position={[5, -5, 0]} />
       <camera position={[0, 1, 0]} />
-      {/* <color attach="background" args={["black"]} /> */}
       <primitive
         ref={ref}
         object={gltf.scene}

@@ -10,9 +10,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: { slug: string };
 }>) {
+  console.log(params);
   return (
     <html lang="en">
       <body className={`bg-black text-white antialiased`}>

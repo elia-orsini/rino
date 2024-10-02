@@ -2,9 +2,9 @@ import WrittenText from "@/components/WrittenText";
 
 export default function Music() {
   return (
-    <div className="absolute m-4 min-h-screen w-3/5 font-[RagRegular] text-lg">
+    <div className="absolute p-4 min-h-screen sm:w-4/5 lg:w-3/5 font-[RagRegular] text-lg">
       <WrittenText
-        text="MUSIC Enim adipisicing irure aute in Nostrud do laboris consequat aliqua
+        text="Enim adipisicing irure aute in Nostrud do laboris consequat aliqua
       incididunt incididunt. Ipsum culpa quis qui minim non. Incididunt aliquip
       proident voluptate ea tempor nisi ipsum.ad anim do magna ea aliqua elit.
       Quis adipisicing do sint commodo qui adipisicing incididunt est quis
