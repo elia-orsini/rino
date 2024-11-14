@@ -37,6 +37,10 @@ export default function Slideshow() {
 
   return (
     <div className="absolute top-0 h-screen w-screen overflow-hidden opacity-80">
+      {/* <div className="absolute inset-0" style={{ opacity: 1 }}>
+        <Image src={images[0]} alt="bg" fill className="object-cover" />
+      </div> */}
+
       <div ref={imageRef} className="absolute inset-0" style={{ opacity: 1 }}>
         <Image
           src={images[currentImageIndex]}
