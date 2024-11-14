@@ -22,8 +22,8 @@ export default function Menu() {
     gsap.to(sectionTitles, {
       opacity: showMenu ? 1 : 0,
       translateX: showMenu ? "0px" : "10px",
-      duration: 0.3,
-      stagger: 0.2,
+      duration: 0.2,
+      stagger: 0.1,
     });
   }, [showMenu]);
 
@@ -88,7 +88,7 @@ export default function Menu() {
 
       <button
         onClick={closeMenu}
-        className="absolute bottom-10 right-10 z-20 h-20 w-20 rounded-full border border-white p-4 transition-colors duration-500 hover:bg-white hover:text-black"
+        className="fixed bottom-10 right-10 z-20 h-20 w-20 rounded-full border border-white p-4 bg-black transition-colors duration-500 hover:bg-white hover:text-black"
       >
         <ArrowImage rotated={showMenu} />
       </button>

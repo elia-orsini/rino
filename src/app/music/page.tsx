@@ -2,7 +2,7 @@ import WrittenText from "@/components/WrittenText";
 
 export default function Music() {
   return (
-    <div className="absolute min-h-screen p-4 font-[RagRegular] text-lg sm:w-4/5 lg:w-3/5">
+    <div className="absolute min-h-screen p-4 pb-4 font-[RagRegular] text-lg sm:w-4/5 lg:w-3/5">
       <WrittenText
         text="Enim adipisicing irure aute in Nostrud do laboris consequat aliqua
       incididunt incididunt. Ipsum culpa quis qui minim non. Incididunt aliquip
