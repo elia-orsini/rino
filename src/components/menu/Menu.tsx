@@ -1,31 +1,97 @@
 "use client";
 
-import getCurrentUser from "@/utils/getCurrentUser";
-import signOut from "@/utils/signOut";
+import { useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+
+import useWindowWidth from "@/hooks/useWindowWidth";
+
+import ArrowImage from "./ArrowImage";
+import BackArrow from "./BackArrow";
+import useRinoStore from "@/store/useStore";
+import { Vector3 } from "three";
 
 export default function Menu() {
-  const [user, setUser] = useState<any>({});
+  const [showMenu, setShowMenu] = useState(false);
+  const { setCameraPosition } = useRinoStore();
 
-  useEffect(() => {
-    getCurrentUser().then((user) => setUser(user));
-  }, []);
+  useGSAP(() => {
+    const sectionTitles = gsap.utils.toArray(".sectionTitle");
+
+    gsap.to(sectionTitles, {
+      opacity: showMenu ? 1 : 0,
+      translateX: showMenu ? "0px" : "10px",
+      duration: 0.2,
+      stagger: 0.1,
+    });
+  }, [showMenu]);
+
+  const isScreenMobile = useWindowWidth()! < 500;
+
+  function onMenuClick() {
+    if (isScreenMobile) {
+      setShowMenu(false);
+    }
+
+    setCameraPosition(new Vector3(0, 0, 3));
+  }
+
+  function onBackClick() {
+    setCameraPosition(new Vector3(0, 0, 5));
+  }
+
+  function closeMenu() {
+    setShowMenu(!showMenu);
+  }
 
   return (
-    <div className="flex flex-row p-4">
-      <Link href={"/"} className="mr-10 sm:mr-20 sm:text-xl">
-        cafes letterboxd
-      </Link>
-      <div className="my-auto flex flex-row gap-x-5 align-middle">
-        <Link href={"/cafes"}>cafes</Link>
-        {!user && <Link href={"/login"}>login</Link>}
-        {user && <Link href={"/diary"}>diary</Link>}
+    <>
+      <div className="absolute right-0 z-20 m-4 flex flex-col gap-y-5 text-right font-mono text-5xl font-bold uppercase">
+        <Link
+          onClick={onMenuClick}
+          href="/music"
+          className="sectionTitle ml-auto block w-max bg-black/80 opacity-0 sm:bg-black/50"
+        >
+          music
+        </Link>
+        <Link
+          onClick={onMenuClick}
+          href="/productions"
+          className="sectionTitle ml-auto block w-max bg-black/80 opacity-0 sm:bg-black/50"
+        >
+          productions
+        </Link>
+        <Link
+          onClick={onMenuClick}
+          href="/about"
+          className="sectionTitle ml-auto block w-max bg-black/80 opacity-0 sm:bg-black/50"
+        >
+          about
+        </Link>
+        <Link
+          onClick={onMenuClick}
+          href="/contact"
+          className="sectionTitle ml-auto block w-max bg-black/80 opacity-0 sm:bg-black/50"
+        >
+          contact
+        </Link>
+        <Link
+          onClick={onBackClick}
+          href="/"
+          className="sectionTitle ml-auto block w-max bg-black/80 opacity-0 sm:bg-black/50"
+        >
+          <BackArrow />
+          back
+        </Link>
       </div>
-      <div className="my-auto ml-auto flex flex-row gap-x-4 align-middle">
-        <p className="hidden sm:block">{user?.email && user.email.split("@")[0]}</p>
-        {user && <button onClick={() => signOut()}>out</button>}
-      </div>
-    </div>
+
+      <button
+        onClick={closeMenu}
+        className="fixed bottom-10 right-10 z-20 h-20 w-20 rounded-full border border-white p-4 bg-black transition-colors duration-500 hover:bg-white hover:text-black"
+      >
+        <ArrowImage rotated={showMenu} />
+      </button>
+    </>
   );
 }
