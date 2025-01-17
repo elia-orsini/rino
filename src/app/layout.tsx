@@ -1,12 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Menu from "@/components/menu/Menu";
-import OutlinedImages from "@/components/OutlinedImages";
-import Canvas3D from "@/components/3D/Canvas3D";
 
 export const metadata: Metadata = {
-  title: "Rino Bellandi",
-  description: "Rino Bellandi",
+  title: "Coffee Letterboxd",
+  description: "Coffee Letterboxd",
 };
 
 export default function RootLayout({
@@ -16,14 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-black text-white antialiased`}>
+      <body className={`antialiased`}>
         <Menu />
-
-        <OutlinedImages />
-
-        <div className="absolute z-0 h-screen w-screen">
-          <Canvas3D />
-        </div>
 
         <div className="bg-transparent">{children}</div>
       </body>
